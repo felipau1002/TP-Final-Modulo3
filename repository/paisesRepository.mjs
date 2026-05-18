@@ -19,6 +19,10 @@ class paisesRepository {
     static async eliminarPais(id) {
         return paisHispano.findByIdAndDelete(id);
     }
+
+    static async buscarPais(id) {
+        return await paisHispano.findById(id);
+    }
 }
 
 

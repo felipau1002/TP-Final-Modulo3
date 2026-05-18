@@ -1,4 +1,4 @@
-import { consumirAPIPaises, crearPais, editarPais, eliminarPais } from '../services/paisServices.mjs'
+import { consumirAPIPaises, crearPais, editarPais, eliminarPais, buscarPais } from '../services/paisServices.mjs'
 
 
 export async function obtenerPaisesController(req, res) {
@@ -48,6 +48,22 @@ export async function eliminarPaisController(req, res) {
         }
 
         res.redirect('/api/paises');
+    }   catch(error) {
+        res.status(500).send({mensaje: 'Pais no eliminado', error: error.message});
+    }
+}
+
+
+
+export async function buscarPaisController(req, res) {
+    try {
+        const { id } = req.params;
+        const pais = await buscarPais(id);
+        if(!pais) {
+            return res.status(404).json({ mensaje: 'Pais no encontrado' });
+        }
+
+        res.render('editarPais', { pais });
     }   catch(error) {
         res.status(500).send({mensaje: 'Pais no eliminado', error: error.message});
     }

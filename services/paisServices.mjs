@@ -36,3 +36,8 @@ export async function editarPais(id, datosActualizados) {
 export async function eliminarPais(id) {
     return await paisesRepository.eliminarPais(id);
 }
+
+
+export async function buscarPais(id) {
+    return await paisesRepository.buscarPais(id);
+}
