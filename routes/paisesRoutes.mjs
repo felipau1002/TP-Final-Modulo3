@@ -1,8 +1,12 @@
 import express from 'express';
 import { obtenerPaisesController, crearPaisController, editarPaisController, eliminarPaisController, buscarPaisController } from '../controllers/paisesControllers.mjs'
+import { validacionNombre, validacionCapital, validacionBorders, validacionArea, validacionPopulation } from '../validations/paisValidations.mjs'
+import { middlewareDeErrores } from '../middlewares/middlewareErrores.mjs'
+
 
 
 const router = express.Router();
+
 
 
 router.get('/inicio', (req, res) => {
@@ -21,7 +25,12 @@ router.get('/paises/crear', (req, res) => {
 
 router.post(
     '/paises/crear',
-    // Aqui van las validaciones
+    validacionNombre,
+    validacionCapital,
+    validacionBorders,
+    validacionArea,
+    validacionPopulation,
+    middlewareDeErrores,
     crearPaisController
 );
 
@@ -31,7 +40,12 @@ router.get('/paises/editar/:id', buscarPaisController);
 
 router.put(
     '/paises/editar/:id',
-    // Aqui van las validaciones
+    validacionNombre,
+    validacionCapital,
+    validacionBorders,
+    validacionArea,
+    validacionPopulation,
+    middlewareDeErrores,
     editarPaisController
 );
 

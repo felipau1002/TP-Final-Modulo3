@@ -3,9 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paises</title>
+    <title>Paises</title><link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    
+    <main>
+        <h1>Paises De América</h1>
+        <section>
+            <% paises.forEach(pais => { %>
+                <div class="pais">
+                    <h2><strong><%= pais.name %></strong></h2>
+                    <h4><strong>Capital:</strong></h4>
+                    <p><%= pais.capital %></p>
+                    <% if(array.isArray(pais.borders)) { %>
+                        <h4><strong>Paises Limítrofes:</strong></h4>
+                        <ul>
+                            <%= pais.borders.forEach(p => { %>
+                                <li><%= p %></li>
+                            <% }) %>
+                        </ul>
+                    <% } %>
+                    <h4><strong>Area:</strong></h4>
+                    <p><%= pais.area %></p>
+                    <h4><strong>Población:</strong></h4>
+                    <p><%= pais.population %></p>
+                    <% if(array.isArray(pais.timezones)) { %>
+                        <h4><strong>Zona Horaria:</strong></h4>
+                        <ul>
+                            <%= pais.timezones.forEach(p => { %>
+                                <li><%= p %></li>
+                            <% }) %>
+                        </ul>
+                    <% } %>
+                    <p><%= pais.timezones %></p>
+                    <h4><strong>Creador:</strong></h4>
+                    <p><%= pais.creador %></p>
+                    <div class="botones">
+                        <a href="/api/paises/editar/<%= pais._id %>?_method=put">Editar Pais</a>
+                        <form action="/api/paises/<%= pais._id %>?_method=delete" method="post" onsubmit="return confirmarEliminacion()">
+                            <button type="submit">Eliminar</button>
+                        </form>
+                        <script>
+                            function confirmarEliminacion() { return confirm('Seguro que desea eliminar el pais?'); }
+                        </script>
+                    </div>
+                </div>
+            <% }); %>
+        </section>
+    </main>
 </body>
 </html>
