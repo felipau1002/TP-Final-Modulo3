@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paises</title><link rel="stylesheet" href="../css/styles.css">
+    <title>Paises</title>
 </head>
 <body>
     <main>
@@ -14,10 +14,10 @@
                     <h2><strong><%= pais.name %></strong></h2>
                     <h4><strong>Capital:</strong></h4>
                     <p><%= pais.capital %></p>
-                    <% if(array.isArray(pais.borders)) { %>
+                    <% if(Array.isArray(pais.borders)) { %>
                         <h4><strong>Paises Limítrofes:</strong></h4>
                         <ul>
-                            <%= pais.borders.forEach(p => { %>
+                            <% pais.borders.forEach(p => { %>
                                 <li><%= p %></li>
                             <% }) %>
                         </ul>
@@ -26,15 +26,14 @@
                     <p><%= pais.area %></p>
                     <h4><strong>Población:</strong></h4>
                     <p><%= pais.population %></p>
-                    <% if(array.isArray(pais.timezones)) { %>
-                        <h4><strong>Zona Horaria:</strong></h4>
+                    <% if(Array.isArray(pais.timezones)) { %>
+                        <h4><strong>Zonas Horarias:</strong></h4>
                         <ul>
-                            <%= pais.timezones.forEach(p => { %>
+                            <% pais.timezones.forEach(p => { %>
                                 <li><%= p %></li>
                             <% }) %>
                         </ul>
                     <% } %>
-                    <p><%= pais.timezones %></p>
                     <h4><strong>Creador:</strong></h4>
                     <p><%= pais.creador %></p>
                     <div class="botones">

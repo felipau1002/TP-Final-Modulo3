@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear País</title>
+</head>
+<body>
+    <main>
+        <h1>Crear Nuevo País</h1>
+
+        <form action="/api/paises/crear" method="post" class="formulario">
+            <div>
+                <label for="name">Nombre del país:</label>
+                <br>
+                <input type="text" name="name" id="name" required>
+            </div>
+
+            <div>
+                <label for="capital">Capital del país:</label>
+                <br>
+                <input type="text" name="capital" id="capital" required>
+            </div>
+
+            <div>
+                <label for="borders">Paises limítrofes:</label>
+                <br>
+                <input type="text" name="borders" id="borders[]">
+                <input type="text" name="borders" id="borders[]">
+                <input type="text" name="borders" id="borders[]">
+                <input type="text" name="borders" id="borders[]">
+                <input type="text" name="borders" id="borders[]">
+            </div>
+
+            <div>
+                <label for="area">Area del país:</label>
+                <br>
+                <input type="number" name="area" id="area" required>
+            </div>
+
+            <div>
+                <label for="population">Población del país</label>
+                <br>
+                <input type="number" name="population" id="population" required>
+            </div>
+
+            <div>
+                <label for="timezones">Zonas horarias:</label>
+                <br>
+                <input type="text" name="timezones" id="timezones[]">
+                <input type="text" name="timezones" id="timezones[]">
+                <input type="text" name="timezones" id="timezones[]">
+                <input type="text" name="timezones" id="timezones[]">
+            </div>
+
+            <div>
+                <label for="creador">Creador:</label>
+                <br>
+                <input type="text" name="creador" id="creador" required>
+            </div>
+
+            <div class="botones">
+                <a href="/api/paises">Volver a la lista</a>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

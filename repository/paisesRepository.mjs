@@ -3,8 +3,18 @@ import paisHispano from '../models/pais.mjs';
 
 class paisesRepository {
 
-    static async guardarPaises(paises) {
-        return await paisHispano.insertMany(paises, { ordered: false });
+    static async guardarPaises(paises) {    // VERIFICA SI CADA PAIS EXISTE, SI NO EXISTE LO CREA
+        for(const pais of paises) {
+            const paisExistente = await paisHispano.findOne({ name: pais.name });
+
+            if(!paisExistente) {
+                await paisHispano.create(pais);
+            }
+        }
+    }
+
+    static async obtenerPaises() {
+        return await paisHispano.find();
     }
 
     static async agregarPais(pais) {

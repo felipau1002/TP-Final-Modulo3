@@ -6,7 +6,7 @@ export async function consumirAPIPaises() {
     const datos = await response.json();
 
     
-    const paisLimpio = datos
+    return datos
         .filter(pais => pais.languages && pais.languages.spa)
         .map(pais => ({
         name: pais.name.common,
@@ -17,9 +17,10 @@ export async function consumirAPIPaises() {
         timezones: pais.timezones,
         creador: "Felipe_Calas",
     }));
+}
 
-
-    return paisesRepository.guardarPaises(paisLimpio);
+export async function obtenerTodosLosPaises() {
+    return await paisesRepository.obtenerPaises();
 }
 
 

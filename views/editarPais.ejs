@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar País</title>
+</head>
+<body>
+    <main>
+        <h1>Crear Nuevo País</h1>
+
+        <form action="/api/paises/editar/<%= pais._id %>?_method=put" method="post" class="formulario" style="height: 1350px;">
+            <div>
+                <label for="name">Nombre del país:</label>
+                <br>
+                <input type="text" name="name" id="name" value="<%= pais.name %>" required>
+            </div>
+
+            <div>
+                <label for="capital">Capital del país:</label>
+                <br>
+                <input type="text" name="capital" id="capital" value="<%= pais.capital %>" required>
+            </div>
+
+            <div>
+                <label for="borders">Paises limítrofes:</label>
+                <br>
+                <% pais.borders.forEach(border => { %>
+                    <input type="text" name="borders" id="borders[]" value="<%= border %>">
+                <% }) %>
+            </div>
+
+            <div>
+                <label for="area">Area del país:</label>
+                <br>
+                <input type="number" name="area" id="area" value="<%= pais.area %>" required>
+            </div>
+
+            <div>
+                <label for="population">Población del país</label>
+                <br>
+                <input type="number" name="population" id="population" value="<%= pais.population %>" required>
+            </div>
+
+            <div>
+                <label for="timezones">Zonas horarias:</label>
+                <br>
+                <% pais.timezones.forEach(timezone => { %>
+                    <input type="text" name="timezones" id="timezones[]" value="<%= timezone %>">
+                <% }) %>
+            </div>
+
+            <div>
+                <label for="creador">Creador:</label>
+                <br>
+                <input type="text" name="creador" id="creador" value="<%= pais.creador %>" required>
+            </div>
+
+            <div class="botones">
+                <a href="/api/paises">Volver a la lista</a>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

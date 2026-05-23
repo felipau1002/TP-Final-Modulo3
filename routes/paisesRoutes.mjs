@@ -1,5 +1,5 @@
 import express from 'express';
-import { obtenerPaisesController, crearPaisController, editarPaisController, eliminarPaisController, buscarPaisController } from '../controllers/paisesControllers.mjs'
+import { cargarPaisesController, obtenerPaisesController, crearPaisController, editarPaisController, eliminarPaisController, buscarPaisController } from '../controllers/paisesControllers.mjs'
 import { validacionNombre, validacionCapital, validacionBorders, validacionArea, validacionPopulation } from '../validations/paisValidations.mjs'
 import { middlewareDeErrores } from '../middlewares/middlewareErrores.mjs'
 
@@ -12,6 +12,8 @@ const router = express.Router();
 router.get('/inicio', (req, res) => {
     res.render('inicio');
 })
+
+router.post('/paises/cargar', cargarPaisesController);
 
 
 

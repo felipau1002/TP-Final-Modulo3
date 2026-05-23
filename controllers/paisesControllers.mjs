@@ -1,9 +1,22 @@
-import { consumirAPIPaises, crearPais, editarPais, eliminarPais, buscarPais } from '../services/paisServices.mjs'
+import paisesRepository from '../repository/paisesRepository.mjs'
+import { consumirAPIPaises, obtenerTodosLosPaises, crearPais, editarPais, eliminarPais, buscarPais } from '../services/paisServices.mjs'
 
+
+export async function cargarPaisesController(req, res) {
+    try {
+        const paisesAPI = await consumirAPIPaises();
+
+        await paisesRepository.guardarPaises(paisesAPI);
+
+        res.redirect('/api/paises');
+    }   catch(error) {
+        res.status(500).send({mensaje: 'Paises no cargados', error: error.message});
+    }
+}
 
 export async function obtenerPaisesController(req, res) {
-    try {
-        const paises = await consumirAPIPaises();
+    try{
+        const paises = await obtenerTodosLosPaises();
 
         res.render('dashboard', { paises });
     }   catch(error) {
