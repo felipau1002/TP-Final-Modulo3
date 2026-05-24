@@ -6,7 +6,7 @@ import expressLayouts from 'express-ejs-layouts';
 import path from 'path';
 import methodOverride from 'method-override';
 
-// Establece unos servidores predeterminados en caso de que haya un error a nivel global
+// Establece unos servidores predeterminados en caso de que los servidores a nivel global no funcionen
 dns.setServers(['8.8.8.8', '1.1.1.1']);
 
 
